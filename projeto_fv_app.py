@@ -156,6 +156,6 @@ def gerar_memorial():
     desenhar_tabela(pdf, [65, 40, 40, 45], ["Numero de strings (serie)", "-", "1", "1"])
     desenhar_tabela(pdf, [65, 40, 40, 45], ["Numero de MPPTs Utilizadas", "-", "1", "1"])
 
-    return pdf.output(dest='S').encode('latin-1')
+    return pdf.output
 
 st.download_button("📥 Baixar Memorial Técnico Completo", data=gerar_memorial(), file_name="Memorial_Tecnico_Final.pdf", mime="application/pdf")
