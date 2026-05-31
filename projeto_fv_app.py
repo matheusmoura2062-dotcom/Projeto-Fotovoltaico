@@ -1,6 +1,7 @@
 import streamlit as st
 import pandas as pd
 import altair as alt
+import io
 from fpdf import FPDF
 
 # Configuração
@@ -156,6 +157,11 @@ def gerar_memorial():
     desenhar_tabela(pdf, [65, 40, 40, 45], ["Numero de strings (serie)", "-", "1", "1"])
     desenhar_tabela(pdf, [65, 40, 40, 45], ["Numero de MPPTs Utilizadas", "-", "1", "1"])
 
-    return pdf.output()
+    pdf_bytes = pdf.output() 
+    return pdf_bytes
+pdf_data = gerar_memorial()
 
-st.download_button("📥 Baixar Memorial Técnico Completo", data=gerar_memorial(), file_name="Memorial_Tecnico_Final.pdf", mime="application/pdf")
+if isinstance(pdf_data, str):
+    pdf_data = pdf_data.encode('latin-1')
+    
+st.download_button("📥 Baixar Memorial Técnico Completo", data=io.BytesIO(pdf_data), file_name="Memorial_Tecnico_Final.pdf", mime="application/pdf")
