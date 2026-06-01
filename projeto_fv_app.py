@@ -270,8 +270,6 @@ def item(pdf, texto):
  
 def gerar_memorial():
     pdf = FPDF()
-    pdf.add_font("Arial",       fname=r"C:\Windows\Fonts\arial.ttf")
-    pdf.add_font("Arial", style="B", fname=r"C:\Windows\Fonts\arialbd.ttf")
     pdf.add_page()
  
     # ── CABEÇALHO ──────────────────────────────────────────────────────────
