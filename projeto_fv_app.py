@@ -4,6 +4,7 @@ import numpy as np
 import io
 import altair as alt
 from fpdf import FPDF, XPos, YPos
+import fpdf
 import os
 
 # --- CONFIGURAÇÃO ---
