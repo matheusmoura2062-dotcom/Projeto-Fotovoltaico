@@ -4,6 +4,7 @@ import numpy as np
 import io
 import altair as alt
 from fpdf import FPDF, XPos, YPos
+from pathlib import Path
 import fpdf
 import os
 
