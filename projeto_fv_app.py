@@ -272,9 +272,9 @@ def item(pdf, texto):
  
 def gerar_memorial():
     pdf = FPDF()
-    dejavu_path = os.path.join(os.path.dirname(fpdf.__file__), "fonts")
-    pdf.add_font("DejaVu", "", os.path.join(dejavu_path, "DejaVuSans.ttf"))
-    pdf.add_font("DejaVu", "B", os.path.join(dejavu_path, "DejaVuSans-Bold.ttf"))
+    BASE_DIR = Path(__file__).parent
+    pdf.add_font("DejaVu", "", str(BASE_DIR / "DejaVuSans.ttf"))
+    pdf.add_font("DejaVu", "B", str(BASE_DIR / "DejaVuSans-Bold.ttf"))
     pdf.add_page()
  
     # ── CABEÇALHO ──────────────────────────────────────────────────────────
