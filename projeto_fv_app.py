@@ -270,7 +270,7 @@ def item(pdf, texto):
  
  
 def gerar_memorial():
-    pdf = FPDF()
+   pdf = FPDF()
 
    # Fonte Unicode (resolve acentos, traços, símbolo °, etc.)
    fonte = r"C:\Windows\Fonts\DejaVuSans.ttf"
