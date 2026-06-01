@@ -489,7 +489,12 @@ def gerar_memorial():
     linha(pdf, lq, ["Resultado (Limite 4%)",   "OK",       "OK"])
     pdf.ln(4)
  
-    return bytes(pdf.output())
+    pdf_output = pdf.output()
+
+    if isinstance(pdf_output, bytearray):
+       return bytes(pdf_output)
+
+    return pdf_output
  
  
 # --- BOTÃO PDF ---
