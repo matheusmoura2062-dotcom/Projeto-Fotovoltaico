@@ -4,7 +4,8 @@ import numpy as np
 import io
 import altair as alt
 from fpdf import FPDF, XPos, YPos
- 
+import os
+
 # --- CONFIGURAÇÃO ---
 
 st.set_page_config(page_title="Engenharia Solar Pro", layout="wide")
@@ -235,15 +236,15 @@ if uploaded_file is not None:
 def linha(pdf, larguras, celulas, is_header=False, fill_color=None):
     """Desenha uma linha de tabela."""
     if is_header:
-        pdf.set_font("Helvetica", 'B', 8)
+        pdf.set_font("DejaVu", 'B', 8)
         pdf.set_fill_color(180, 180, 180)
         fill = True
     elif fill_color:
-        pdf.set_font("Helvetica", 'B', 8)
+        pdf.set_font("DejaVu", 'B', 8)
         pdf.set_fill_color(*fill_color)
         fill = True
     else:
-        pdf.set_font("Helvetica", '', 8)
+        pdf.set_font("DejaVu", '', 8)
         pdf.set_fill_color(255, 255, 255)
         fill = True
     for i, (larg, texto) in enumerate(zip(larguras, celulas)):
@@ -254,30 +255,33 @@ def linha(pdf, larguras, celulas, is_header=False, fill_color=None):
  
 def titulo_secao(pdf, texto):
     """Título de seção padronizado."""
-    pdf.set_font("Helvetica", 'B', 12)
+    pdf.set_font("DejaVu", 'B', 12)
     pdf.cell(190, 10, texto, new_x=XPos.LMARGIN, new_y=YPos.NEXT)
  
  
 def subtitulo(pdf, texto):
-    pdf.set_font("Helvetica", 'B', 10)
+    pdf.set_font("DejaVu", 'B', 10)
     pdf.cell(190, 8, texto, new_x=XPos.LMARGIN, new_y=YPos.NEXT)
  
  
 def item(pdf, texto):
-    pdf.set_font("Helvetica", '', 10)
+    pdf.set_font("DejaVu", '', 10)
     pdf.cell(190, 6, texto, new_x=XPos.LMARGIN, new_y=YPos.NEXT)
  
  
 def gerar_memorial():
     pdf = FPDF()
+    dejavu_path = os.path.join(os.path.dirname(fpdf.__file__), "fonts")
+    pdf.add_font("DejaVu", "", os.path.join(dejavu_path, "DejaVuSans.ttf"))
+    pdf.add_font("DejaVu", "B", os.path.join(dejavu_path, "DejaVuSans-Bold.ttf"))
     pdf.add_page()
  
     # ── CABEÇALHO ──────────────────────────────────────────────────────────
 
-    pdf.set_font("Helvetica", 'B', 16)
+    pdf.set_font("DejaVu", 'B', 16)
     pdf.cell(190, 10, "Memorial Descritivo e Financeiro",
              new_x=XPos.LMARGIN, new_y=YPos.NEXT, align='C')
-    pdf.set_font("Helvetica", '', 11)
+    pdf.set_font("DejaVu", '', 11)
     pdf.cell(190, 7, f"Local: {local_instalacao}",
              new_x=XPos.LMARGIN, new_y=YPos.NEXT, align='C')
     pdf.ln(4)
@@ -377,7 +381,7 @@ def gerar_memorial():
 
     # linha 1 do cabeçalho (grupos)
 
-    pdf.set_font("Helvetica", 'B', 8)
+    pdf.set_font("DejaVu", 'B', 8)
     pdf.set_fill_color(180, 180, 180)
     pdf.cell(60, 7, "Criterio",        border=1, fill=True)
     pdf.cell(60, 7, "Valores (CC)",    border=1, fill=True, align='C')
