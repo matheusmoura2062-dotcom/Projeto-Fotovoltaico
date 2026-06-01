@@ -270,16 +270,16 @@ def item(pdf, texto):
  
  
 def gerar_memorial():
-   pdf = FPDF()
+    pdf = FPDF()
 
-   # Fonte Unicode (resolve acentos, traços, símbolo °, etc.)
-   fonte = r"C:\Windows\Fonts\DejaVuSans.ttf"
-   fonte_bold = r"C:\Windows\Fonts\DejaVuSans-Bold.ttf"
+    # Fonte Unicode (resolve acentos, traços, símbolo °, etc.)
+    fonte = r"C:\Windows\Fonts\DejaVuSans.ttf"
+    fonte_bold = r"C:\Windows\Fonts\DejaVuSans-Bold.ttf"
 
-   pdf.add_font("DejaVu", "", fonte)
-   pdf.add_font("DejaVu", "B", fonte_bold)
+    pdf.add_font("DejaVu", "", fonte)
+    pdf.add_font("DejaVu", "B", fonte_bold)
 
-   pdf.add_page()
+    pdf.add_page()
  
     # ── CABEÇALHO ──────────────────────────────────────────────────────────
 
